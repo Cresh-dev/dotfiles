@@ -1,0 +1,117 @@
+{
+    // -------------------------------------------------------------------------
+    // Global configuration
+    // -------------------------------------------------------------------------
+
+    "layer": "top",
+    "exclusive": true,
+    "position": "bottom",
+    "height": 30,
+    "z-index": 1000,
+
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock#date",
+        "clock#time"
+    ],
+    "modules-right": [
+        "tray",
+        "memory",
+        "cpu",
+        "temperature",
+        "pulseaudio",
+        "backlight",
+        "battery",
+    ],
+
+    // -------------------------------------------------------------------------
+    // Modules
+    // -------------------------------------------------------------------------
+
+    "battery": {
+        "interval": 10,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "  {icon}  {capacity}%", // Icona: bolt
+        "format-discharging": "{icon}  {capacity}%",
+        "format-icons": [
+            "", "", "", "", ""
+        ],
+        "tooltip": true
+    },
+
+    "clock#time": {
+        "interval": 1,
+        "format": "{:%H:%M:%S}",
+        "tooltip": false
+    },
+
+    "clock#date": {
+      "interval": 10,
+      "format": "  {:%e %b %Y}",
+      "tooltip-format": "{:%e %B %Y}"
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": "Cpu: {usage}%",
+        "states": {
+          "warning": 70,
+          "critical": 90
+        }
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "Mem: {}%",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "hyprland/workspaces": {
+        "all-outputs": false,
+        "disable-scroll": true
+    },
+
+    "pulseaudio": {
+        "scroll-step": 1,
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{icon}  {volume}%",
+        "format-muted": "Mute",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    
+    "backlight": {
+	"device": "intel_backlight",
+	"format": "{icon} {percent}%",
+	"format-icons": ["", ""]
+    },
+
+    "temperature": {
+      "critical-threshold": 80,
+      "interval": 5,
+      "format": "Temp: {temperatureC}°C",
+      "tooltip": true
+    },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    }
+}
+
