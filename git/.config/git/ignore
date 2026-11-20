@@ -1,0 +1,12 @@
+# Global gitignore, read automatically by git (XDG location).
+
+# macOS
+.DS_Store
+._*
+
+# Editors
+*.swp
+*~
+
+# Safety net against committing secrets: projects ship a .env.example instead
+.env
