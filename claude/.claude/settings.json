@@ -50,6 +50,9 @@
     "deny": [
       "Bash(git push --force *)",
       "Bash(git push -f *)",
+      "Bash(git push * --force*)",
+      "Bash(git push * -f*)",
+      "Bash(git push * +*)",
       "Read(**/.env)",
       "Read(**/.env.local)",
       "Read(**/.env.production)",
@@ -58,7 +61,13 @@
       "Read(**/*.key)",
       "Read(~/.ssh/**)",
       "Read(~/.gnupg/**)",
-      "Read(~/.kube/config)"
+      "Read(~/.kube/config)",
+      "Read(~/.netrc)",
+      "Read(~/.npmrc)",
+      "Read(~/.docker/config.json)",
+      "Read(~/.config/gh/**)",
+      "Read(~/.zshrc.local)",
+      "Read(~/.ollama/id_ed25519)"
     ],
     "ask": [
       "Bash(git push *)",
@@ -101,7 +110,10 @@
     "searchfit-seo@synced": false,
     "design@synced": false,
     "canva@synced": false,
-    "productivity@synced": false
+    "productivity@synced": false,
+    "data@synced": false,
+    "engineering@synced": false,
+    "remotion@synced": false
   },
   "language": "Italiano",
   "sandbox": {
@@ -134,7 +146,13 @@
       "denyRead": [
         "~/.ssh",
         "~/.gnupg",
-        "~/.kube/config"
+        "~/.kube/config",
+        "~/.netrc",
+        "~/.npmrc",
+        "~/.docker/config.json",
+        "~/.config/gh",
+        "~/.zshrc.local",
+        "~/.ollama/id_ed25519"
       ]
     },
     "excludedCommands": [
