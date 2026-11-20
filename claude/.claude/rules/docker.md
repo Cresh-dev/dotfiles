@@ -20,7 +20,7 @@ paths:
 - Nessun segreto in `ARG`, `ENV` o file copiati: resterebbero nei layer dell'immagine. Per segreti in fase di build usa `RUN --mount=type=secret`.
 
 ## Architettura
-- Sul Mac (M1) le immagini sono `linux/arm64`. Se l'immagine deve girare anche su server `amd64`, usa `docker buildx build --platform linux/amd64,linux/arm64`.
+- Sul Mac (M2) le immagini sono `linux/arm64`. Se l'immagine deve girare anche su server `amd64`, usa `docker buildx build --platform linux/amd64,linux/arm64`.
 - Se un'immagine esterna esiste solo per `amd64`, segnalamelo prima di usarla (gira in emulazione, lenta).
 
 ## Compose

@@ -8,8 +8,9 @@ paths:
 # Regole Python
 
 ## Ambiente e dipendenze
-- **Mai** installare pacchetti nel Python di sistema o di Homebrew: ogni progetto ha il suo ambiente virtuale (`.venv` nella cartella del progetto, in `.gitignore`). Spiegami perché la prima volta.
-- Strumento preferito: **uv** (`uv venv`, `uv add <pacchetto>`, `uv run <comando>`): gestisce ambiente, dipendenze e lockfile ed è molto veloce. Se manca, proponi `brew install uv`.
+- **Mai** installare pacchetti nel Python di sistema o di Homebrew: ogni progetto ha il suo ambiente virtuale, creato col **Python di mise**. Spiegami perché la prima volta.
+- Dove sta il venv: `.venv` nella cartella del progetto (in `.gitignore`). Eccezione: progetti in `~/Documents` o `~/Desktop` (sincronizzati con iCloud) → `~/.virtualenvs/<nome>`; con uv si indica con `UV_PROJECT_ENVIRONMENT`.
+- Strumento preferito: **uv** (`uv venv --python "$(mise which python)"`, `uv add <pacchetto>`, `uv run <comando>`): gestisce ambiente, dipendenze e lockfile ed è molto veloce. Passa sempre `--python` da mise, altrimenti uv può scaricare un Python suo. Se manca, proponi `mise use -g uv`.
 - Se il progetto usa già `requirements.txt` o un altro strumento (pip, Poetry), rispettalo e segnalami solo se conviene migrare.
 - Dipendenze dichiarate in `pyproject.toml` quando possibile; versioni fissate nel lockfile.
 
