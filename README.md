@@ -13,6 +13,11 @@ Each top-level folder is a *stow package*: its contents mirror paths relative to
 | `aerospace` | `~/.config/aerospace/aerospace.toml`      | Tiling window manager                |
 | `mise`      | `~/.config/mise/config.toml`              | Global Node/Python/Ruby/Go/Java      |
 | `cava`      | `~/.config/cava/`                         | Audio visualizer                     |
+| `claude`    | `~/.claude/settings.json`, `statusline.sh`, `rules/` | Claude Code: permissions, Bash sandbox, status line, notifications, plugins |
+
+`~/.claude/CLAUDE.md` is intentionally not tracked: it holds personal context. The plugins listed in
+`settings.json` come from the official marketplace (`claude plugin install <name>@claude-plugins-official`);
+the LSP plugins need `pyright`, `typescript-language-server` and `typescript`, installed globally via mise.
 
 Not stowed:
 
