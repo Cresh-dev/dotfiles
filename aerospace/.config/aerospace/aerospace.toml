@@ -1,0 +1,207 @@
+# ====================================================
+# AeroSpace configuration - MacBook Pro M2 (Italian - Pro layout)
+# Docs: https://nikitabobko.github.io/AeroSpace/guide
+# ====================================================
+
+# Enables the latest config semantics (removes the deprecation warning)
+config-version = 2
+
+# Start AeroSpace at login
+start-at-login = true
+
+# Normalizations (flatten and fix orientation for nested containers)
+# Helps eliminate unnecessary tree complexity
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# Layout defaults
+accordion-padding = 30
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+# With config-version = 2 workspaces are no longer implicitly persistent
+persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+
+# Mouse follows focused monitor
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# Physical key positions (works with the Italian layout too)
+[key-mapping]
+preset = 'qwerty'
+
+# ====================================================
+# Gaps
+# ====================================================
+[gaps]
+inner.horizontal = 12
+inner.vertical = 12
+outer.left = 10
+outer.bottom = 10
+outer.top = 10
+outer.right = 10
+
+# ====================================================
+# Window rules
+# ====================================================
+# Utility / menu bar apps float instead of being tiled
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.calculator'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apphousekitchen.aldente-pro'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.if.Amphetamine'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'ch.protonvpn.mac'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.logitech.Logi-Options'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'cx.c3.theunarchiver'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'net.freemacsoft.AppCleaner'
+run = 'layout floating'
+
+# Firefox Picture-in-Picture
+[[on-window-detected]]
+if.app-id = 'org.mozilla.firefox'
+if.window-title-regex-substring = 'Picture-in-Picture'
+run = 'layout floating'
+
+# Example: pin an app to a workspace
+# [[on-window-detected]]
+# if.app-id = 'com.microsoft.VSCode'
+# run = 'move-node-to-workspace 2'
+
+# ====================================================
+# Main Mode Bindings
+# ====================================================
+[mode.main.binding]
+
+# --- Open a new Ghostty window ---
+# If Ghostty is not running, launching it already opens a window
+alt-enter = '''exec-and-forget osascript -e '
+if application "Ghostty" is running then
+    tell application "Ghostty"
+        new window
+        activate
+    end tell
+else
+    tell application "Ghostty" to activate
+end if'
+'''
+
+# --- Focus (vim-style, wrap around workspace boundaries) ---
+alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
+alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
+alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
+alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
+
+# --- Move nodes ---
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# --- Fullscreen / Floating / Layouts ---
+alt-f = 'fullscreen'
+alt-s = 'layout v_accordion'
+alt-w = 'layout h_accordion'
+alt-e = 'layout tiles horizontal vertical'
+alt-shift-space = 'layout floating tiling'
+
+# --- Workspaces ---
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+alt-0 = 'workspace 10'
+
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-0 = 'move-node-to-workspace 10'
+
+# Jump to the previous workspace
+alt-tab = 'workspace-back-and-forth'
+# Send the current workspace to the next monitor (external display)
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+# Reload configuration
+alt-shift-c = 'reload-config'
+
+# Enter Resize / Service mode
+alt-r = 'mode resize'
+alt-shift-semicolon = 'mode service'  # alt-shift-ò on the Italian layout
+
+# ====================================================
+# Resize Mode Bindings
+# ====================================================
+[mode.resize.binding]
+
+# Precise resizing
+h = 'resize width -10'
+l = 'resize width +10'
+j = 'resize height +10'
+k = 'resize height -10'
+
+# Quick resizing
+shift-h = 'resize width -100'
+shift-l = 'resize width +100'
+shift-j = 'resize height +100'
+shift-k = 'resize height -100'
+
+# Smart resizing (along the parent container's orientation)
+minus = 'resize smart -50'
+equal = 'resize smart +50'
+
+# Equalize all window sizes
+b = ['balance-sizes', 'mode main']
+
+# Exit resize mode
+enter = 'mode main'
+esc = 'mode main'
+
+# ====================================================
+# Service Mode Bindings
+# ====================================================
+[mode.service.binding]
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main']           # reset layout
+f = ['layout floating tiling', 'mode main']           # toggle floating/tiling
+backspace = ['close-all-windows-but-current', 'mode main']
+
+# Join the focused window with its neighbour into a new container
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
+alt-shift-l = ['join-with right', 'mode main']

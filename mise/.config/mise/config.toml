@@ -1,0 +1,9 @@
+[settings]
+idiomatic_version_file_enable_tools = ["node", "ruby"]
+
+[tools]
+go = "latest"
+java = "temurin-21"
+node = "lts"
+python = "3.14"
+ruby = "3.4"
