@@ -81,6 +81,25 @@ expect_contains detached "$out" "$sha"
 
 expect_absent colors "$raw_full" "38;2;" "38;5;"
 
+# Empty strings must not shift the other fields
+if out="$(render '{"workspace":{"current_dir":""},"model":{"display_name":"Opus 5.5"},"context_window":{"used_percentage":40}}' 2>&1 | strip_ansi)"; then
+  expect_contains empty-dir "$out" "$I_MODEL Opus 5.5" "▰▰▰▱▱▱▱▱ 40%"
+else
+  fail empty-dir "non-zero exit: $out"
+fi
+out="$(render '{"workspace":{"current_dir":"'"$plain"'"},"model":{"display_name":""},"context_window":{"used_percentage":40},"rate_limits":{"five_hour":{"used_percentage":10}}}' 2>&1 | strip_ansi)"
+expect_contains empty-model "$out" "▰▰▰▱▱▱▱▱ 40%" "$I_RATE 5h 10%"
+
+# Non-numeric percentages fall back instead of crashing or being evaluated by bash arithmetic
+marker="$tmp/pwned"
+# shellcheck disable=SC2016  # the $(...) must stay literal: it is the injection payload
+out="$(render '{"model":{"display_name":"M"},"context_window":{"used_percentage":"BAR_CELLS[$(touch '"$marker"')]"},"rate_limits":{"five_hour":{"used_percentage":"abc"}}}' 2>&1 | strip_ansi)"
+expect_contains bad-pct "$out" "0%"
+expect_absent bad-pct-rate "$out" "5h" "error"
+if [[ -e "$marker" ]]; then fail no-injection "arithmetic expansion ran a command"; else pass no-injection; fi
+out="$(render '{"model":{"display_name":"M"},"context_window":{"used_percentage":5},"rate_limits":{"five_hour":{"used_percentage":1e-7}}}' 2>&1 | strip_ansi)"
+expect_contains tiny-rate "$out" "5h 0%"
+
 elapsed_ms="$(perl -MTime::HiRes=time -e '
   my $t = time; system(@ARGV) == 0 or exit 1; printf "%d", (time - $t) * 1000;
 ' bash -c "\"\$0\" <<<\"\$1\" >/dev/null" "$SCRIPT" "$full_json")"

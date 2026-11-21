@@ -19,19 +19,25 @@ readonly BLUE=$'\e[34m' MAGENTA=$'\e[35m' YELLOW=$'\e[33m' RED=$'\e[31m' GREY=$'
 readonly SEP=" ${GREY}│${RESET} "
 readonly BAR_CELLS=8
 
-# One jq call for every field (each call is a process spawn); "\t"-joined
-# so empty fields survive (IFS=tab collapses runs, hence the "-" placeholder).
-IFS=$'\t' read -r dir model ctx rate < <(
-  jq -r '[
-    (.workspace.current_dir // .cwd // "-"),
-    (.model.display_name // "?"),
-    (.context_window.used_percentage // 0),
-    (.rate_limits.five_hour.used_percentage // "-")
-  ] | map(tostring) | join("\t")'
+# One jq call for every field (each call is a process spawn). jq normalizes
+# here: percentages become integers or "-", so nothing non-numeric ever
+# reaches bash arithmetic (which would evaluate it as code). Joined with the
+# ASCII unit separator: unlike tab it is not IFS whitespace, so empty
+# fields don't collapse and shift the others.
+IFS=$'\x1f' read -r dir model ctx rate < <(
+  jq -r '
+    def text: if type == "string" and . != "" then . else "-" end;
+    def pct: if type == "number" then floor | tostring else "-" end;
+    [
+      ((.workspace.current_dir // .cwd) | text),
+      (.model.display_name | text),
+      (.context_window.used_percentage | pct),
+      (.rate_limits.five_hour.used_percentage | pct)
+    ] | join("\u001f")'
 )
 [[ "$dir" == "-" ]] && dir=""
-ctx="${ctx%%.*}"
-rate="${rate%%.*}"
+[[ "$model" == "-" ]] && model="?"
+[[ "$ctx" == "-" ]] && ctx=0
 
 # Grey by default; yellow/red past the warning/critical thresholds.
 level_color() {  # value warn crit
