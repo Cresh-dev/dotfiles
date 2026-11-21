@@ -27,6 +27,22 @@
 [tag]
 	sort = version:refname
 
+# Remember how a conflict was resolved and replay it next time
+[rerere]
+	enabled = true
+[rebase]
+	autoStash = true
+# Show the diff below the message while writing it
+[commit]
+	verbose = true
+
+# Sign with the SSH key already used for GitHub, no GPG needed.
+# The key itself and commit.gpgsign live in ~/.config/git/local (see README).
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed_signers
+
 [alias]
 	lg = log --graph --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %s%C(auto)%d %C(dim)— %an' --date=short
 	st = status -sb

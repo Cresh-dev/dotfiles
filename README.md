@@ -64,7 +64,17 @@ This repo is **public**. Anything personal stays in local files that are never c
   [user]
       name = <name>
       email = <email>
+      # Optional: SSH commit signing (gpg.format = ssh is set in the shared config)
+      signingkey = key::ssh-ed25519 AAAA... <comment>
+  [commit]
+      gpgsign = true
+  [tag]
+      gpgsign = true
   ```
+
+- `~/.config/git/allowed_signers` — public keys trusted by `git log --show-signature`, one per line:
+  `<email> namespaces="git" ssh-ed25519 AAAA...`. Add the same key on GitHub as a *Signing key*
+  to get the "Verified" badge.
 
 - `~/.zshrc.local` — machine-specific shell settings, sourced by `.zshrc` if present.
 
