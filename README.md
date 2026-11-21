@@ -13,6 +13,7 @@ Each top-level folder is a *stow package*: its contents mirror paths relative to
 | `aerospace` | `~/.config/aerospace/aerospace.toml`      | Tiling window manager                |
 | `mise`      | `~/.config/mise/config.toml`              | Global Node/Python/Ruby/Go/Java      |
 | `cava`      | `~/.config/cava/`                         | Audio visualizer                     |
+| `tmux`      | `~/.config/tmux/tmux.conf`                | Multiplexer: mouse, vi keys, splits in cwd |
 | `claude`    | `~/.claude/settings.json`, `statusline.sh`, `rules/`, `skills/`, `output-styles/` | Claude Code: permissions, Bash sandbox, status line, notifications, plugins, personal skills, look |
 
 Claude Code look: theme `dark-ansi` (uses the terminal's 16 ANSI colors, so it follows Ghostty's theme),
