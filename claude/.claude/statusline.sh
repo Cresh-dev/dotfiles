@@ -31,6 +31,18 @@ done
 color="$GREY"
 if (( pct >= 80 )); then color="$RED"; elif (( pct >= 60 )); then color="$YELLOW"; fi
 
+# RAM: 8 GB is the tightest limit on this Mac. sysctl is ~2 ms, memory_pressure ~1 s.
+# Pressure level from the kernel: 1 normal, 2 warning, 4 critical (same as Activity Monitor).
+ram=""
+if ram_free="$(sysctl -n kern.memorystatus_level 2>/dev/null)"; then
+  case "$(sysctl -n kern.memorystatus_vm_pressure_level 2>/dev/null)" in
+    4) ram_color="$RED" ;;
+    2) ram_color="$YELLOW" ;;
+    *) ram_color="$GREY" ;;
+  esac
+  ram=" · ${ram_color}RAM ${ram_free}% libera${RESET}"
+fi
+
 printf '%s%s%s' "$BLUE" "${dir##*/}" "$RESET"
 [[ -n "$branch" ]] && printf ' %s%s%s' "$GREY" "$branch" "$RESET"
-printf ' · %s · %s%s %s%%%s\n' "$model" "$color" "$bar" "$pct" "$RESET"
+printf ' · %s · %s%s %s%%%s%s\n' "$model" "$color" "$bar" "$pct" "$RESET" "$ram"
