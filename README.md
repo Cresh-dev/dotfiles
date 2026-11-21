@@ -14,7 +14,7 @@ Each top-level folder is a *stow package*: its contents mirror paths relative to
 | `mise`      | `~/.config/mise/config.toml`              | Global Node/Python/Ruby/Go/Java      |
 | `cava`      | `~/.config/cava/`                         | Audio visualizer                     |
 | `tmux`      | `~/.config/tmux/tmux.conf`                | Multiplexer: mouse, vi keys, splits in cwd |
-| `vscode`    | `~/Library/Application Support/Code/User/settings.json` | VS Code: GitHub Dark Default, JetBrainsMono, ruff, Error Lens |
+| `vscode`    | `~/Library/Application Support/Code/User/settings.json` | VS Code: GitHub Dark Default, JetBrainsMono, per-language formatters, extension settings (non-default values only) |
 | `claude`    | `~/.claude/settings.json`, `statusline.sh`, `rules/`, `skills/`, `output-styles/` | Claude Code: permissions, Bash sandbox, status line, notifications, plugins, personal skills, look |
 
 Claude Code look: theme `dark-ansi` (uses the terminal's 16 ANSI colors, so it follows Ghostty's theme),
