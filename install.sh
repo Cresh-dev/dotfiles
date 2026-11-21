@@ -7,7 +7,7 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 readonly DOTFILES_DIR
-readonly MAC_PACKAGES=(zsh git vim starship ghostty aerospace mise cava tmux claude)
+readonly MAC_PACKAGES=(zsh git vim starship ghostty aerospace mise cava tmux claude vscode)
 readonly OMZ_DIR="$HOME/.oh-my-zsh"
 readonly OMZ_PLUGINS=(
   "fzf-tab https://github.com/Aloxaf/fzf-tab.git"
