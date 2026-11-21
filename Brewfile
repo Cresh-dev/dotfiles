@@ -31,8 +31,6 @@ brew "git-delta"
 brew "gitleaks"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
-# Improved top (interactive process viewer)
-brew "htop"
 # Configurable static site generator
 brew "hugo"
 # Kubernetes CLI To Manage Your Clusters In Style!
