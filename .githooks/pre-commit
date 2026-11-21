@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Block commits that add secrets: this repo is public.
+# Enabled by install.sh via `git config core.hooksPath .githooks`.
+set -euo pipefail
+
+# Fail closed: an unscanned commit is exactly what this hook exists to stop.
+command -v gitleaks >/dev/null || {
+  echo "pre-commit: gitleaks missing (brew install gitleaks), commit refused" >&2
+  exit 1
+}
+
+# --staged scans only what is about to be committed; --redact keeps any hit out of the terminal.
+exec gitleaks git --pre-commit --staged --redact --no-banner .

@@ -84,6 +84,12 @@ install_runtimes() {
   run mise install
 }
 
+enable_git_hooks() {
+  log "Git hooks for this repo (.githooks: secret scan before commit)"
+  # Hooks in .git/hooks are not versioned; core.hooksPath points git at the tracked folder.
+  run git -C "$DOTFILES_DIR" config core.hooksPath .githooks
+}
+
 check_git_identity() {
   if [[ ! -f "$HOME/.config/git/local" ]]; then
     log "Git identity not set. Create ~/.config/git/local (untracked) with:"
@@ -98,6 +104,7 @@ main() {
   install_oh_my_zsh
   link_dotfiles
   install_runtimes
+  enable_git_hooks
   check_git_identity
   log "Done. Open a new terminal to load the shell config."
 }

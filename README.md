@@ -49,8 +49,9 @@ Not stowed:
    ./install.sh
    ```
 
-   The script installs the Brewfile, Oh My Zsh with its plugins, links every package and installs the
-   mise runtimes. It never overwrites existing files: on conflicts it stops and tells you which ones.
+   The script installs the Brewfile, Oh My Zsh with its plugins, links every package, installs the
+   mise runtimes and enables the repo's git hooks. It never overwrites existing files: on conflicts it
+   stops and tells you which ones.
 3. Create your git identity (see below) and open a new terminal.
 
 ## Private, untracked files
@@ -66,6 +67,11 @@ This repo is **public**. Anything personal stays in local files that are never c
   ```
 
 - `~/.zshrc.local` — machine-specific shell settings, sourced by `.zshrc` if present.
+
+As a safety net, `.githooks/pre-commit` runs [gitleaks](https://github.com/gitleaks/gitleaks) on the
+staged changes and refuses the commit if it finds a secret (or if gitleaks is missing).
+`install.sh` enables it with `git config core.hooksPath .githooks`. Scan the whole history with
+`gitleaks git --redact .`.
 
 ## Daily use
 
