@@ -102,7 +102,6 @@
     "typescript-lsp@claude-plugins-official": true,
     "clangd-lsp@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
-    "explanatory-output-style@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "legal@synced": false,
     "marketing@synced": false,
@@ -114,6 +113,7 @@
     "engineering@synced": false,
     "remotion@synced": false
   },
+  "outputStyle": "Cresh",
   "language": "Italiano",
   "sandbox": {
     "enabled": true,
