@@ -17,33 +17,13 @@
   },
   "permissions": {
     "allow": [
-      "Bash(git status)",
-      "Bash(git diff *)",
-      "Bash(git log *)",
-      "Bash(git branch *)",
-      "Bash(npm run lint *)",
-      "Bash(npm run lint)",
-      "Bash(npm run test *)",
-      "Bash(npm run test)",
-      "Bash(npm test)",
-      "Bash(npm run typecheck)",
-      "Bash(npm run build)",
-      "Bash(npx tsc --noEmit *)",
-      "Bash(npx tsc --noEmit)",
-      "Bash(npx vitest run *)",
-      "Bash(pytest *)",
-      "Bash(ruff check *)",
-      "Bash(ruff format *)",
-      "Bash(shellcheck *)",
       "Bash(docker ps *)",
       "Bash(docker images *)",
       "Bash(docker system df)",
       "Bash(brew list *)",
       "Bash(brew info *)",
       "Bash(brew outdated *)",
-      "Bash(mise ls *)",
       "Bash(memory_pressure)",
-      "Bash(git -C /Users/alessio/dotfiles status *)",
       "Bash(git -C /Users/alessio/dotfiles add *)",
       "Bash(git -C /Users/alessio/dotfiles commit *)"
     ],
@@ -80,6 +60,9 @@
       "Bash(brew install *)",
       "Bash(brew uninstall *)",
       "Bash(brew upgrade *)",
+      "Bash(mise use *)",
+      "Bash(mise install *)",
+      "Bash(mise upgrade *)",
       "Bash(kubectl apply *)",
       "Bash(kubectl delete *)",
       "Bash(sudo *)"
@@ -184,6 +167,5 @@
     "enabled": true,
     "mode": "hold"
   },
-  "theme": "auto",
-  "voiceEnabled": true
+  "theme": "auto"
 }
