@@ -27,6 +27,8 @@ brew "ghq"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Audit git repos for secrets
+brew "gitleaks"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # Improved top (interactive process viewer)
@@ -49,12 +51,8 @@ brew "minikube"
 brew "mise"
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
-# Execute binaries from Python packages in isolated environments
-brew "pipx"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.14"
 # File browser
 brew "ranger"
 # Static analysis and lint tool, for (ba)sh scripts
