@@ -79,6 +79,17 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/shellcheck-edited.sh"
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
