@@ -13,7 +13,16 @@ Each top-level folder is a *stow package*: its contents mirror paths relative to
 | `aerospace` | `~/.config/aerospace/aerospace.toml`      | Tiling window manager                |
 | `mise`      | `~/.config/mise/config.toml`              | Global Node/Python/Ruby/Go/Java      |
 | `cava`      | `~/.config/cava/`                         | Audio visualizer                     |
-| `claude`    | `~/.claude/settings.json`, `statusline.sh`, `rules/`, `skills/` | Claude Code: permissions, Bash sandbox, status line, notifications, plugins, personal skills |
+| `claude`    | `~/.claude/settings.json`, `statusline.sh`, `rules/`, `skills/`, `output-styles/` | Claude Code: permissions, Bash sandbox, status line, notifications, plugins, personal skills, look |
+
+Claude Code look: theme `dark-ansi` (uses the terminal's 16 ANSI colors, so it follows Ghostty's theme),
+Italian nerd `spinnerVerbs`, and the `Cresh` output style (`output-styles/cresh.md`: Italian, terse,
+minimal "insight" blocks). The status line (`statusline.sh`) prints
+`dir  branch* │ model │ ▰▰▱▱ ctx% │ 5h rate% │ RAM free%` with Nerd Font icons and ANSI colors only;
+test it with `bash tests/statusline_test.sh`. Path-scoped rules in `rules/` cover Docker, Kubernetes,
+GitHub Actions, Python, JS/TS and shell. After adding a file to the package, run `stow --restow claude`.
+The `"<name>@synced": false` entries in `enabledPlugins` are intentional: plugins synced from claude.ai
+load by default, and those entries switch them off.
 
 Personal skills (`claude/.claude/skills/`): `/commit` (Conventional Commits + secret scan), `/dotfiles-sync`
 (Brewfile, stow health, commit), `/new-project` (Python/Node scaffold), `/health-check` (read-only machine report).
