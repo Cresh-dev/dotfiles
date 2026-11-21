@@ -178,5 +178,36 @@
     "enabled": true,
     "mode": "hold"
   },
-  "theme": "auto"
+  "theme": "dark-ansi",
+  "spinnerTipsEnabled": false,
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "Ricompilando il kernel dei pensieri",
+      "Facendo grep nell'universo",
+      "Risolvendo le dipendenze",
+      "Facendo rebase della realtà",
+      "Sfogliando le man page",
+      "Consultando /dev/random",
+      "Tirando su i container",
+      "Bilanciando i pod",
+      "Svuotando la cache",
+      "Facendo chmod +x alle idee",
+      "Ottimizzando i dotfiles",
+      "Riallineando i bit",
+      "Compilando con -O3",
+      "Montando il filesystem",
+      "Inseguendo un segfault",
+      "Negoziando l'handshake TLS",
+      "Facendo hash delle idee",
+      "Pipando stdin in stdout",
+      "Rigenerando le chiavi",
+      "Cercando nel $PATH",
+      "Facendo stow dei pensieri",
+      "Ricaricando la config",
+      "Decifrando i log",
+      "Facendo curl verso l'ignoto",
+      "Interrogando il demone"
+    ]
+  }
 }
