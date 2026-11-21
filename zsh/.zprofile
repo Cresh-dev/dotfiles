@@ -5,6 +5,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="$HOME/.local/bin:$HOME/.opencode/bin:$PATH"
 export MANPATH="$HOME/linux-man/man-pages-6.10:$MANPATH"
 export EDITOR="vim"
+export HOMEBREW_NO_ANALYTICS=1   # no usage data sent to analytics.brew.sh
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
